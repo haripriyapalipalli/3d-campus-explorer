@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Campus Explorer — Virtual Tour of Solitaire Business School</title>
+  <meta name="description" content="3D Campus Explorer: A responsive virtual tour of Solitaire Business School featuring offices, reception, computer lab, library, seminar room, classrooms, events, and achievements." />
+ 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      background-color: #e6f2ff;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Hero section: Moving background with animated gradient */
+#hero {
+  height: 100vh;
+  background: linear-gradient(-45deg, #001933, #003366, #002244, #004080);
+  background-size: 400% 400%;
+  animation: darkBlueGradientShift 20s ease infinite;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Initial position for parallax controlled in JS */
+  background-position: 0% 50%;
+<div class="floating-square" style="top: 50%; left: 10%; animation-delay: 0s;"></div>
+<div class="floating-square" style="top: 70%; left: 40%; animation-delay: 2s;"></div>
+<div class="floating-square" style="top: 100%; left: 80%; animation-delay: 4s;"></div>
+<div class="floating-square" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+<div class="floating-square" style="top: 50%; left: 40%; animation-delay: 2s;"></div>
+<div class="floating-square" style="top: 70%; left: 80%; animation-delay: 4s;"></div>
+
+}
+
+@keyframes darkBlueGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Optional sparkle overlay */
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: radial-gradient(white 2px, transparent 2px);
+  background-size: 50px 50px;
+  animation: sparkleMove 15s linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes sparkleMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+
+    .main-title {
+      color: white;
+      font-size: 70px;
+      font-weight: 800;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.3);
+    }
+
+    .sub-title {
+      font-size: 30px;
+      color: #d0e6ff;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    header.site-header, footer.site-footer {
+      background: #f5f5f5;
+      padding: 10px 0;
+    }
+
+    .site-header .brand {
+      font-size: 1.7em;
+      color: #444;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    nav.site-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav.site-nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    section.section {
+      padding: 60px 0 40px;
+      background: #fff;
+    }
+
+    section.alt {
+      background: #f0fbff;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .card-grid, .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .card, .achievement {
+      background: #fafafa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      padding: 22px;
+      text-align: left;
+      min-height: 215px;
+    }
+
+    .card-media {
+      margin-bottom: 15px;
+    }
+
+    .ratio-16x9 {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #e3ecf4;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .ratio-16x9 iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .placeholder-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .badge {
+      background: #53a7ea;
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    .events-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .event-btn {
+      padding: 13px 23px;
+      font-size: 1.1em;
+      border: none;
+      background-color: #177fff;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.2s;
+    }
+
+    .event-btn:hover {
+      background-color: #0f5faf;
+    }
+
+    .footer-inner {
+      text-align: center;
+      color: #444;
+    }
+
+    .back-to-top {
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+      margin-left: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .main-title { font-size: 38px; }
+      .sub-title { font-size: 18px; }
+      .section, .alt { padding: 30px 0; }
+    }
+.card:nth-child(1) h3 { color: #0077b6; } /* Aqua Blue */
+.card:nth-child(2) h3 { color: #0077b6; } /* Sky Blue */
+.card:nth-child(3) h3 { color: #0077b6; } /* Light Cyan */
+.card:nth-child(4) h3 { color: #0077b6; } /* Very Pale Blue */
+
+.card-body p {
+  color: #003153; /* Replace with any hex color code you prefer */
+}
+
+.card-body h3 {
+  font-size: 32px; /* Adjust size for all titles */
+}
+
+.card-body p {
+  font-size: 20px; /* Adjust size for all descriptions */
+}
+#section-3 {
+  background-color:#0a1e3f  ;
+}
+#section-5 {
+  background-color:#13294b  ;
+}
+@keyframes floatSquares {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-square {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: floatSquares 6s ease-in-out infinite;
+  border-radius: 8px;
+  /* Position and delay variations */
+}
+.subheading {
+  font-size: 24px;
+  color: #b0d8ff;
+  font-weight: 400;
+  margin-top: 10px;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.2);
+}
+.sub-title {
+  margin-bottom: 5px; /* reduce gap below subtitle */
+}
+
+.subheading {
+  margin-top: 0;  /* remove excess space above subheading */
+  font-size: 24px;
+  color: #b0d8ff;
+  font-weight: 400;
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.2);
+}
+.main-title {
+  animation: slideInDown 2s ease-out;
+}
+
+.sub-title {
+  animation: fadeIn 3s ease-in;
+}
+
+.subheading {
+  animation: fadeInUp 3s ease-in;
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  position: relative;
+  background: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+}
+ 
+.social-links a {
+  margin-left: 15px;
+  color: #177fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #0f5faf;
+}
+
+.social-links i {
+  vertical-align: middle;
+}
+
+form {
+  background-color: #001f3f; /* Dark Navy Blue */
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: auto;
+}
+
+label {
+  color: #80bfff; /* Light blue */
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #004080;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #cce0ff;
+  background-color: #003366;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #0066cc;
+  background-color: #004080;
+  outline: none;
+}
+
+button {
+  background-color: #004080;
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #003366;
+}  
+   #campus-calendar {
+  background-color:#003366;
+  padding: 60px 0;
+}
+  
+
+#campus-calendar .calendar-table table.alt4 {
+  background-color: #0b3d91; /* Blue Sapphire */
+}
+
+#campus-calendar .calendar-table table {
+  background-color: #001f3f; /* Dark Navy Blue */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+/* Adjust header colors accordingly */
+#campus-calendar .calendar-table th {
+  background-color:#001f3f; /* Keep header darker */
+  color: white;
+  font-weight: 600;
+}
+
+/* White text for readability */
+#campus-calendar .calendar-table td {
+  color: white;
+}
+ 
+
+/* Apply border to table header and data cells */
+#campus-calendar .calendar-table th,
+#campus-calendar .calendar-table td {
+  border: 1px solid #00509e; /* Partition lines in a medium dark blue shade */
+  padding: 14px 18px;
+}
+
+/* Header background and text */
+#campus-calendar .calendar-table th {
+  background-color:#001f3f ; /* darker header background */
+  color: white;
+  font-weight: 600;
+}
+
+/* Hover effect for rows */
+#campus-calendar .calendar-table tr:hover {
+  background-color: #00264d;
+  transition: background-color 0.3s ease;
+}
+  .social-cta {
+  font-weight: 600;
+  font-size: 16px;
+  color: #003366; /* Dark blue color */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Right arrow using CSS */
+.arrow-right {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: solid #003366;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+   
+   /* Change all achievement headings to your desired color */
+section#section-5 .achievement h3 {
+  color: #2E86C1; /* Replace with your preferred heading color */
+}
+
+/* Change all achievement text to your desired color */
+section#section-5 .achievement p {
+  color: #34495E; /* Replace with your preferred text color */
+}
+
+
+ </style>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container header-inner" style="display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="logo1.jpeg" alt="Solitaire Business School Logo" style="height: 70px; width: auto; border-radius: 8px;">
+      <a href="#top" class="brand" aria-label="3D Campus Explorer Home">
+        3D Campus Explorer
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Primary Navigation">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#section-2">Key areas</a></li>
+        <li><a href="#section-3">Rooms</a></li>
+        <li><a href="#section-4">Events</a></li>
+        <li><a href="#section-5">Achievements</a></li>
+       
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section id="hero" class="section hero">
+      <h1 class="main-title">3D CAMPUS EXPLORER</h1>
+      <h2 class="sub-title">Virtual Tour of Solitaire Business School</h2>
+      <h3 class="subheading">Experience our campus virtually!</h3>
+    </section>
+
+    <!-- Key Areas -->
+    <section id="section-2" class="section alt">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="sparkle-text">Explore our key areas</h2>
+          <p>Step into our office, reception, computer lab, and library.</p>
+        </header>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Office 360° Tour" src="https://teliportme.com/view/2483228" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>Office</h3>
+              <p>Take a 360° look around our office space.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Reception 360° Tour" src="https://teliportme.com/embed/2483915" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>Reception</h3>
+              <p>Our welcoming reception area in full 360°.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Computer Lab 360° Tour" src="https://teliportme.com/view/2483230" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>Computer Lab</h3>
+              <p>Explore our modern computer lab facilities.</p>
+            </div>
+            </article>
+            <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Library 360° Tour" src="https://teliportme.com/embed/2483912" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>College Library</h3>
+              <p>Houses 5000+ books and digital journals.</p>
+            </div>
+          </article>
+     </div>
+    </section>
+
+    <!-- Seminar & Classrooms -->
+    <section id="section-3" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="sparkle-text">Seminar & Classrooms</h2>
+          <p>Discover our seminar room and classroom environments.</p>
+        </header>
+        <div class="card-grid">
+          <article class="card">
+                    <div class="card-media ratio-16x9">
+              <iframe title="Seminar Room 360 Tour" src=" https://teliportme.com/embed/2483913" loading="lazy" allowfullscreen></iframe>
+             </div>
+            <div class="card-body">
+              <h3>Seminar Room</h3>
+              <p>Spacious seminar room designed for talks and workshops.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Classroom A" src=" https://teliportme.com/embed/2483219" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>Classroom A</h3>
+              <p>Modern classroom with interactive learning tools.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media ratio-16x9">
+              <iframe title="Classroom B" src="https://teliportme.com/view/2483153" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <h3>Classroom B</h3>
+              <p>Bright and flexible seating for collaborative study.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="section-4" class="section alt">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="sparkle-text">Events</h2>
+          <p>Explore key college events: Independence Day, Freshers, Graduation, Workshops & Seminars.</p>
+        </header>
+        <div class="events-grid">
+         <button class="event-btn" id="independenceBtn">Independence Day</button>
+          <button class="event-btn" id="freshersBtn">Freshers Ceremony</button>
+         <button class="event-btn" id="graduationBtn">Graduation Ceremony</button>
+       <button class="event-btn" id="sanskritiBtn">Sanskriti Hind ki Pehchan</button>
+        <button class="event-btn" id="workshopsBtn">Workshops & Seminars</button>
+      <button class="event-btn" id="thubBtn">College Trip(T-Hub)</button>
+
+        </div>
+  </div>
+</div>
+
+<!-- Existing Events section here -->
+
+<!-- Modal Popup Carousel for Freshers -->
+<div id="freshersModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeFreshers">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active"><img src="FRESHERS P1.jpeg" alt="Freshers Photo 1"></div>
+      <div class="carousel-item"><img src="FRESHERS P2.jpeg" alt="Freshers Photo 2"></div>
+      <div class="carousel-item"><img src="FRESHERS P3.jpeg" alt="Freshers Photo 3"></div>
+      <button id="prevFreshers">&#10094;</button>
+      <button id="nextFreshers">&#10095;</button>
+    </div>
+  </div>
+</div>
+   
+
+<div id="independenceModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeIndependence">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active"><img src="Independence day p1.jpeg" alt="Independence Image 1"></div>
+      <div class="carousel-item"><img src="Independence day p2.jpeg" alt="Independence Image 2"></div>
+      <div class="carousel-item"><img src="Independence day p3.jpeg" alt="Independence Image 3"></div>
+      <button id="prevIndependence">❮</button>
+      <button id="nextIndependence">❯</button>
+    </div>
+  </div>
+</div>
+
+<div id="graduationModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeGraduation">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active"><img src="Graduation ceremony p1.jpeg" alt="Graduation 1"></div>
+      <div class="carousel-item"><img src="Graduation ceremony p2.jpeg" alt="Graduation 2"></div>
+     </div>
+      <button id="prevGraduation">❮</button>
+      <button id="nextGraduation">❯</button>
+    </div>
+  </div>
+</div>
+
+<div id="sanskritiModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeSanskriti">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active"><img src="Sanskriti hind ki pehchaan p1.jpeg" alt="Sanskriti 1"></div>
+      <div class="carousel-item"><img src="Sanskriti hind ki pehchaan p2.jpeg" alt="Sanskriti 2"></div>
+      <div class="carousel-item"><img src="Sanskriti hind ki pehchaan p3.jpeg" alt="Sanskriti 3"></div>
+       <div class="carousel-item"><img src="Sanskriti hind ki pehchaan p4.jpeg" alt="Sanskriti 3"></div>
+      <div class="carousel-item"><img src="Sanskriti hind ki pehchaan p5.jpeg" alt="Sanskriti 3"></div>
+      <button id="prevSanskriti">❮</button>
+      <button id="nextSanskriti">❯</button>
+    </div>
+  </div>
+</div>
+  
+<div id="workshopsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeWorkshops">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active"><img src="Seminar and workshop p1.jpeg" alt="Workshop 1"></div>
+      <div class="carousel-item"><img src="Seminar and workshop p2.jpeg" alt="Workshop 2"></div>
+      <div class="carousel-item"><img src="Seminar and workshop p3.jpeg" alt="Workshop 3"></div>
+      <button id="prevWorkshops">❮</button>
+      <button id="nextWorkshops">❯</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal Popup Carousel for College Trip (T-Hub) -->
+<div id="thubModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeThub">&times;</span>
+    <div class="carousel-container">
+      <div class="carousel-item active">
+        <img src="T-HUB p1.jpeg" alt="College Trip to T-Hub Photo 2">
+      </div>
+      <div class="carousel-item">
+        <img src="T-HUB p2.jpeg" alt="College Trip to T-Hub Photo 2">
+      </div>
+      <div class="carousel-item">
+        <img src="T-HUB p3.jpeg" alt="College Trip to T-Hub Photo 3">
+      </div>
+    <div class="carousel-item">
+        <img src="T-HUB p4.jpeg" alt="College Trip to T-Hub Photo 3">
+      </div>
+      <div class="carousel-item">
+        <img src="T-HUB p5.jpeg" alt="College Trip to T-Hub Photo 3">
+      </div>
+      <button id="prevThub">❮</button>
+      <button id="nextThub">❯</button>
+    </div>
+  </div>
+</div>
+
+
+    </section>
+
+    <!-- Achievements -->
+    <section id="section-5" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2 class="sparkle-text">Achievements</h2>
+          <p>Recognizing excellence from our students and our college.</p>
+        </header>
+        <div class="achievements-grid">
+          <article class="achievement">
+            <h3>Student Hackathon Winners</h3>
+            <p>Our innovative student teams secured first place in multiple state-level and national hackathons, showcasing their problem-solving and tech skills.</p>
+<p>Several teams received special mentions for innovation and social impact in technology-based challenges.</p>
+<p>Students have also represented the college in several Hackathon, developing real-time solutions for local government and educational institutions.</p>
+          </article>
+          <article class="achievement">
+            <h3>Research Publications</h3>
+            <p>Faculty and students have published numerous papers in high-impact academic journals, contributing to business and management knowledge.</p>
+    <p>Topics include Artificial Intelligence in Business, Sustainable Management Models, and FinTech Innovations. </p>
+    <p>Faculty guides have also received Best Research Paper Awards for excellence in entrepreneurship studies.. </p>
+
+          </article>
+          <article class="achievement">
+            <h3>Sports Championships</h3>
+            <p>Proud winners of several intercollegiate sports tournaments, demonstrating excellence in athletics and team spirit.</p>
+          </article>
+          <article class="achievement">
+            <h3>Community Initiatives</h3>
+            <p>Our students lead impactful outreach programs that benefit local communities through sustainability, education, and social welfare activities.</p>
+<p>Collaborated with NGOs for “Young Entrepreneurs for Change”, helping small entrepreneurs with marketing and finance mentoring.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+<section id="campus-calendar" class="section alt">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="sparkle-text">Campus Calendar</h2>
+      <p>Explore the important academic dates, holidays, and campus events for the year.</p>
+    </header>
+
+    <div class="calendar-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Event </th>
+          <th>Activity</th>
+            <th>Academics</th>
+
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>July</td>
+            <td>Semester Reopening& Orientation Week</td>
+            <td>Semester Inauguration Ceremony</td>
+             <td>Semester Initiation & Academic Support Program</td>
+
+        </tr>
+          <tr>
+            <td>August</td>
+            <td>Independence Day Celebration</td>
+               <td>Festival Celebrations</td>
+                <td>Mid-semester Assignments Due</td>
+
+
+          </tr>
+          <tr>
+            <td>September</td>
+            <td>Freshers Party & Graduation Ceremony</td>
+             <td>College Trip (T-Hub) & Workshops</td>
+             <td>First Internals</td>
+           
+          </tr>
+          <tr>
+            <td>October</td>
+            <td>Cultural Fest “Sanskriti Hind ki Pehchan”</td>
+             <td>Mid-semester Break / Study Holidays</td>
+          <td>Project Proposal Submissions</td>
+
+           
+        
+          </tr>
+          <tr>
+            <td>November</td>
+           <td>Annual Sports Meet</td>
+            <td>Annual NEXUS FIESTA 2025</td>
+           <td>Second Internals</td>
+
+              
+        </tr>
+         
+              <tr>
+            <td>December</td>
+           <td>End of Semester Exams</td>
+            <td>Semester Break</td>
+           <td>Academic Advising for Next Semester</td>
+
+              
+         </tr>         
+
+    
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>   
+
+           <section id="section-6" class="section alt">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="sparkle-text">Interactive 3D Campus Map</h2>
+      <p>Click on different buildings to explore our 3D virtual campus layout.</p>
+    </header>
+
+    <!-- 3D Map Embed -->
+    <div style="text-align:center;">
+           
+      <iframe src="https://www.google.com/maps/embed?pb=!4v1761320724949!6m8!1m7!1srgF7TsKqJyToBX3BmcddKA!2m2!1d17.43234616603491!2d78.44831312937988!3f217.9374195263296!4f44.53586605171347!5f0.7820865974627469" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       
+    </div>
+  </div>
+</section>
+
+            
+
+    </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> 3D Campus Explorer · Virtual Tour of Solitaire Business School</p>
+      <a href="#top" class="back-to-top">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script>
+  window.addEventListener('scroll', () => {
+    const hero = document.getElementById('hero');
+    const scrollY = window.scrollY;
+    const parallaxX = scrollY * 0.2; 
+    hero.style.backgroundPosition = `${parallaxX % 100}% 50%`;
+  });
+ const freshersModal = document.getElementById('freshersModal');
+  const freshersBtn = document.getElementById('freshersBtn');
+  const closeFreshers = document.getElementById('closeFreshers');
+  const freshersSlides = freshersModal.querySelectorAll('.carousel-item');
+  const prevFreshers = document.getElementById('prevFreshers');
+  const nextFreshers = document.getElementById('nextFreshers');
+  let freshersIndex = 0;
+
+  freshersBtn.onclick = () => {
+    freshersModal.style.display = 'flex';
+    showFreshersSlide(freshersIndex);
+  };
+
+  closeFreshers.onclick = () => {
+    freshersModal.style.display = 'none';
+  };
+
+  window.onclick = (event) => {
+    if (event.target === freshersModal) {
+      freshersModal.style.display = 'none';
+    }
+  };
+
+  function showFreshersSlide(index) {
+    freshersSlides.forEach((slide, i) => {
+      slide.style.display = (i === index) ? 'block' : 'none';
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  prevFreshers.onclick = () => {
+    freshersIndex = (freshersIndex === 0) ? freshersSlides.length - 1 : freshersIndex - 1;
+    showFreshersSlide(freshersIndex);
+  };
+
+  nextFreshers.onclick = () => {
+    freshersIndex = (freshersIndex + 1) % freshersSlides.length;
+    showFreshersSlide(freshersIndex);
+  };
+  
+// Independence Day
+const independenceModal = document.getElementById('independenceModal');
+const independenceBtn = document.getElementById('independenceBtn');
+const closeIndependence = document.getElementById('closeIndependence');
+const independenceSlides = independenceModal.querySelectorAll('.carousel-item');
+const prevIndependence = document.getElementById('prevIndependence');
+const nextIndependence = document.getElementById('nextIndependence');
+let independenceIndex = 0;
+
+independenceBtn.onclick = () => {
+  independenceModal.style.display = 'flex';
+  showIndependenceSlide(independenceIndex);
+};
+closeIndependence.onclick = () => independenceModal.style.display = 'none';
+window.addEventListener('click', (event) => {
+  if (event.target === independenceModal) independenceModal.style.display = 'none';
+});
+function showIndependenceSlide(index) {
+  independenceSlides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? 'block' : 'none';
+    slide.classList.toggle('active', i === index);
+  });
+}
+prevIndependence.onclick = () => {
+  independenceIndex = (independenceIndex === 0) ? independenceSlides.length - 1 : independenceIndex - 1;
+  showIndependenceSlide(independenceIndex);
+};
+nextIndependence.onclick = () => {
+  independenceIndex = (independenceIndex + 1) % independenceSlides.length;
+  showIndependenceSlide(independenceIndex);
+};
+// Repeat similar blocks for Graduation, Sanskriti, and Workshops by changing variable names accordingly.
+
+const graduationModal = document.getElementById('graduationModal');
+const graduationBtn = document.getElementById('graduationBtn');
+const closeGraduation = document.getElementById('closeGraduation');
+const graduationSlides = graduationModal.querySelectorAll('.carousel-item');
+const prevGraduation = document.getElementById('prevGraduation');
+const nextGraduation = document.getElementById('nextGraduation');
+let graduationIndex = 0;
+
+graduationBtn.onclick = () => {
+  graduationModal.style.display = 'flex';
+  showGraduationSlide(graduationIndex);
+};
+closeGraduation.onclick = () => graduationModal.style.display = 'none';
+window.addEventListener('click', (event) => {
+  if (event.target === graduationModal) graduationModal.style.display = 'none';
+});
+function showGraduationSlide(index) {
+  graduationSlides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? 'block' : 'none';
+    slide.classList.toggle('active', i === index);
+  });
+}
+prevGraduation.onclick = () => {
+  graduationIndex = (graduationIndex === 0) ? graduationSlides.length - 1 : graduationIndex - 1;
+  showGraduationSlide(graduationIndex);
+};
+nextGraduation.onclick = () => {
+  graduationIndex = (graduationIndex + 1) % graduationSlides.length;
+  showGraduationSlide(graduationIndex);
+};
+
+const sanskritiModal = document.getElementById('sanskritiModal');
+const sanskritiBtn = document.getElementById('sanskritiBtn');
+const closeSanskriti = document.getElementById('closeSanskriti');
+const sanskritiSlides = sanskritiModal.querySelectorAll('.carousel-item');
+const prevSanskriti = document.getElementById('prevSanskriti');
+const nextSanskriti = document.getElementById('nextSanskriti');
+let sanskritiIndex = 0;
+
+sanskritiBtn.onclick = () => {
+  sanskritiModal.style.display = 'flex';
+  showSanskritiSlide(sanskritiIndex);
+};
+closeSanskriti.onclick = () => sanskritiModal.style.display = 'none';
+window.addEventListener('click', (event) => {
+  if (event.target === sanskritiModal) sanskritiModal.style.display = 'none';
+});
+function showSanskritiSlide(index) {
+  sanskritiSlides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? 'block' : 'none';
+    slide.classList.toggle('active', i === index);
+  });
+}
+prevSanskriti.onclick = () => {
+  sanskritiIndex = (sanskritiIndex === 0) ? sanskritiSlides.length - 1 : sanskritiIndex - 1;
+  showSanskritiSlide(sanskritiIndex);
+};
+nextSanskriti.onclick = () => {
+  sanskritiIndex = (sanskritiIndex + 1) % sanskritiSlides.length;
+  showSanskritiSlide(sanskritiIndex);
+};
+ 
+
+const workshopsModal = document.getElementById('workshopsModal');
+const workshopsBtn = document.getElementById('workshopsBtn');
+const closeWorkshops = document.getElementById('closeWorkshops');
+const workshopsSlides = workshopsModal.querySelectorAll('.carousel-item');
+const prevWorkshops = document.getElementById('prevWorkshops');
+const nextWorkshops = document.getElementById('nextWorkshops');
+let workshopsIndex = 0;
+
+workshopsBtn.onclick = () => {
+  workshopsModal.style.display = 'flex';
+  showWorkshopsSlide(workshopsIndex);
+};
+closeWorkshops.onclick = () => workshopsModal.style.display = 'none';
+window.addEventListener('click', (event) => {
+  if (event.target === workshopsModal) workshopsModal.style.display = 'none';
+});
+function showWorkshopsSlide(index) {
+  workshopsSlides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? 'block' : 'none';
+    slide.classList.toggle('active', i === index);
+  });
+}
+prevWorkshops.onclick = () => {
+  workshopsIndex = (workshopsIndex === 0) ? workshopsSlides.length - 1 : workshopsIndex - 1;
+  showWorkshopsSlide(workshopsIndex);
+};
+nextWorkshops.onclick = () => {
+  workshopsIndex = (workshopsIndex + 1) % workshopsSlides.length;
+  showWorkshopsSlide(workshopsIndex);
+};
+
+
+ // College Trip (T-Hub) Modal
+const thubModal = document.getElementById('thubModal');
+const thubBtn = document.getElementById('thubBtn');
+const closeThub = document.getElementById('closeThub');
+const thubSlides = thubModal.querySelectorAll('.carousel-item');
+const prevThub = document.getElementById('prevThub');
+const nextThub = document.getElementById('nextThub');
+let thubIndex = 0;
+
+thubBtn.onclick = () => {
+  thubModal.style.display = 'flex';
+  showThubSlide(thubIndex);
+};
+
+closeThub.onclick = () => {
+  thubModal.style.display = 'none';
+};
+
+window.addEventListener('click', (event) => {
+  if (event.target === thubModal) {
+    thubModal.style.display = 'none';
+  }
+});
+
+function showThubSlide(index) {
+  thubSlides.forEach((slide, i) => {
+    slide.style.display = (i === index) ? 'block' : 'none';
+    slide.classList.toggle('active', i === index);
+  });
+}
+
+prevThub.onclick = () => {
+  thubIndex = (thubIndex === 0) ? thubSlides.length - 1 : thubIndex - 1;
+  showThubSlide(thubIndex);
+};
+
+nextThub.onclick = () => {
+  thubIndex = (thubIndex + 1) % thubSlides.length;
+  showThubSlide(thubIndex);
+};
+
+
+</script>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> 3D Campus Explorer · Virtual Tour of Solitaire Business School</p>
+    <a href="https://www.solitairebusinessschools.com/" target="_blank" class="college-link"> Solitaire Business School Official College Website</a>
+    <a href="#top" class="back-to-top">↑ Back to top</a>
+  </div> 
+  
+<div class="social-links">
+      <a href="https://www.instagram.com/solitairebusinessschools/?hl=en" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a href="https://www.facebook.com/solitairebusinessschools/" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f fa-lg"></i>
+      </a>
+    </div>
+
+  </div>
+    
+           <div class="social-cta">
+  Official Instagram and Facebook icons attached
+  <span class="arrow-right"></span>
+</div>
+
+
+</footer>
+   
+</body>
+</html>
